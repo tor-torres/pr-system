@@ -1,0 +1,89 @@
+/* Log In Style  */
+.login {
+    background: linear-gradient(rgb(16 70 22), rgb(3 32 8));
+}
+
+.glow {
+    color: #fff;
+    text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #ffff00,
+        0 0 4px #ffff00, 0 0 6px #ffff00, 0 0 7px #ffff00, 0 0 8px #ffff00;
+}
+
+.title {
+    text-align: center;
+    font-weight: 400;
+    animation: glow 1s ease-in-out infinite alternate-reverse;
+}
+
+.logo-login {
+    text-align: center;
+    width: 140px;
+    height: 140px;
+    margin-bottom: 15px;
+}
+
+@keyframes glow {
+    100% {
+        text-shadow: 0 0 1px #fff, 0 0 2px #fff, 0 0 3px #fff, 0 0 4px #ffff00,
+            0 0 5px #ffff00, 0 0 6px #ffff00, 0 0 7px #ffff00;
+    }
+
+    0% {
+        text-shadow: 0 0 2px #fff, 0 0 4px #fff, 0 0 6px #fff, 0 0 8px #ffff00,
+            0 0 10px #ffff00, 0 0 12px #ffff00, 0 0 14px #ffff00, 0 0 14px #ffff00;
+    }
+}
+/* End Log In Style */
+
+/* Main System Design */
+.effect {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    min-width: 100%;
+    height: 100%;
+}
+
+.brand-text {
+    color: white;
+    padding-left: 100%;
+    display: inline-block;
+    animation: animate 20s linear infinite;
+}
+
+.brand-link{
+    background-color: #0c6233 !important;
+}
+
+@keyframes animate {
+    100% {
+        transform: translate(-100%, 0);
+    }
+}
+
+.main-header{
+    background-color: #0c6233;
+}
+
+.main-sidebar{
+    background-color: #202d32;
+}
+
+#end-session{
+    margin-top:30vh;
+}
+
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active,
+.sidebar-light-primary .nav-sidebar>.nav-item>.nav-link.active {
+    background-color: #04401f;
+    color: #fff;
+}
+
+.small-box {
+    background: rgb(255, 252, 13);
+    background: linear-gradient(2deg,
+            rgba(255, 252, 13, 1) 0%,
+            rgba(12, 98, 51, 1) 100%);
+}
+
+/* End Main System Design */
