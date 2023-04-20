@@ -69,6 +69,11 @@
 							<button type="submit" name="submit" class="btn btn-success btn-block mt-3">Sign In <i class="fa fa-arrow-right"></i></button>
 						</div>
 					</div>
+					<div class="row mt-3">
+						<div class="col-12">
+							<p class="login-box-msg">Don't have an account? <a href="register"> Create Account</a></p>
+						</div>
+					</div>
 				</form>
 			</div>
 		</div>
@@ -79,8 +84,12 @@
 	<script src="assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- AdminLTE App -->
 	<script src="assets/dist/js/adminlte.min.js"></script>
-	<!-- Main Script -->
-	<script src="assets/js/script.js"></script>
+	<script>
+		function showPassword(){
+		const show = document.getElementById("password");
+		show.type == "password" ? show.type = 'text' : show.type = 'password';
+	}
+	</script>
 
 </body>
 

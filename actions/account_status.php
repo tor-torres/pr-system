@@ -1,8 +1,8 @@
 <?php
-	$db = new mysqli('localhost','root','','procurement'); 
+	$DB = new mysqli('localhost','root','','procurement-db'); 
 	extract($_POST);
-	$id = $db->real_escape_string($id);
-	$status = $db->real_escape_string($status);
-	$run = $db->query("UPDATE users SET status='$status' WHERE id='$id'");
+	$id = $DB->real_escape_string($id);
+	$status = $DB->real_escape_string($status);
+	$run = $DB->query("UPDATE users SET status='$status' WHERE id='$id'");
 	echo 1;
 ?>
