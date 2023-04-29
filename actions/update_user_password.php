@@ -3,6 +3,7 @@
 if (isset($_POST['btn-submit'])) {
 
     $id = $_GET['id'];
+    $password = $_POST['password'];
     $password = crypt($_POST['password'], '$2a$10$'.bin2hex(random_bytes(22)));
 
     if (empty($error)) {

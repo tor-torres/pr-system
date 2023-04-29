@@ -34,14 +34,14 @@ if (isset($_SESSION[AUTH_ID])) {
             <h4 class="glow title">CPSU PROCUREMENT OFFICE</h4>
         </div>
         <div class="card">
-            <div class="card-body login-card-body">
+            <div class="card-body login-card-body" style="width:200%; margin-left:-50%">
                 <p class="login-box-msg">Sign up to start your session</p>
                 <?= show_message() ?>
                 <form method="post">
                     <input type="hidden" name="action" value="register_user">
                     <div class="form-group">
-                        <div class="form-row mt-2">
-                            <div class="col-lg-12">
+                        <div class="form-row">
+                            <div class="col-lg-6">
                                 <label for="department">Department:</label>
                                 <select class="form-control text-capitalize" id="dept_id" name="dept_id" required>
                                     <option value="">--Select--</option>
@@ -57,54 +57,46 @@ if (isset($_SESSION[AUTH_ID])) {
                                     <?php } ?>
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-row mt-2">
-                            <div class="col-lg-12">
-                                <label for="username">Username:</label>
-                                <input type="text" class="form-control" name="username" id="username"
-                                    placeholder="Please enter username" required autofocus>
-                            </div>
-                        </div>
-                        <div class="form-row mt-2">
-                            <div class="col-lg-12">
-                                <label for="password">Password:</label>
-                                <input type="password" class="form-control" name="password" id="password"
-                                    placeholder="Please enter password" required>
-                            </div>
-                        </div>
-                        <div class="form-row mt-2">
-                            <div class="col-lg-12">
-                                <label for="fullname">Fullname:</label>
-                                <input type="text" name="fullname" id="fullname" class="form-control"
-                                    placeholder="Please enter fullname" required>
-                            </div>
-                        </div>
-                        <div class="form-row mt-2">
-                            <div class="col-lg-12">
+                            <div class="col-lg-6">
                                 <label for="usertype">Position:</label>
                                 <select name="usertype" id="usertype" class="form-control text-capitalize">
                                     <option value="user">User</option>
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-8">
-                            <div class="icheck-success">
-                                <input type="checkbox" id="show" onclick="showPassword()">
-                                <label for="show">Show Password</label>
+                        <div class="form-row">
+                            <div class="col-lg-6">
+                                <label for="fullname">Fullname:</label>
+                                <input type="text" name="fullname" id="fullname" class="form-control"
+                                    placeholder="Please enter fullname" required>
+                            </div>
+                            <div class="col-lg-6">
+                                <label for="username">Username:</label>
+                                <input type="text" class="form-control" name="username" id="username"
+                                    placeholder="Please enter username" required autofocus>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-lg-6">
+                                <label for="password">Password:</label>
+                                <input type="password" class="form-control" name="password" id="password"
+                                    placeholder="Please enter password" required>
+                            </div>
+                            <div class="col-6 pt-4">
+                                <div class="icheck-success">
+                                    <input type="checkbox" id="show" onclick="showPassword()">
+                                    <label for="show">Show Password</label>
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12">
-                            <button type="submit" name="submit" class="btn btn-success btn-block mt-3">Sign Up <i
-                                    class="fa fa-arrow-right"></i></button>
+                        <div class="col-6">
+                            <button type="submit" name="submit" class="btn btn-success">Sign Up
+                                <i class="fa fa-arrow-right"></i></button>
                         </div>
-                    </div>
-                    <div class="row mt-3">
-                        <div class="col-12">
-                            <p class="login-box-msg">Already have an account? <a href="login"> Log In</a></p>
+                        <div class="col-6">
+                            <p class="login-box-msg text-sm">Already have an account? <a href="login"> Log In</a></p>
                         </div>
                     </div>
                 </form>

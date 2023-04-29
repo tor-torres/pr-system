@@ -9,11 +9,12 @@ if (isset($_POST['btn-submit'])) {
     $cost = stripslashes($_POST['cost']);
     $quantity = stripslashes($_POST['quantity']);
     $total_cost = stripslashes($_POST['total_cost']);
+    $item_description = stripslashes($_POST['item_description']);
     $purpose = stripcslashes($_POST['purpose']);
 
     if (empty($error)) {
 
-        $insert = "INSERT INTO pendingtable SET userID = '$userID', cat_id = '$cat_id', item_name = '$item_name', unit = '$unit', cost = '$cost', quantity = '$quantity', total_cost = '$total_cost', purpose = '$purpose' ";
+        $insert = "INSERT INTO pendingtable SET userID = '$userID', cat_id = '$cat_id', item_name = '$item_name', unit = '$unit', cost = '$cost', quantity = '$quantity', total_cost = '$total_cost', item_description = '$item_description', purpose = '$purpose' ";
 
         if ($DB->query($insert)) {
             $_SESSION['message'] = "Request Successfully!";

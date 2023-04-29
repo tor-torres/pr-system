@@ -22,10 +22,10 @@
     ?>
     <input type="date" name="created_at" class="form-control" value="<?php echo $selectedDate ?>" required>
     <button type="submit" class="btn btn-primary mx-3" name="filter">Filter</button>
-    <?php if(isset($_POST['filter']) && $_POST['cat_id'] !== 'select' ): ?>
+    <?php if(isset($_POST['filter']) && $_POST['cat_id'] !== 'select'): ?>
+        <!-- && $_SESSION['filtered_data'] = null -->
     <button type="submit" class="btn btn-success" name="print" onclick="printPDF()">Print</button>
     <?php else: ?>
-        <button type="submit" class="btn btn-success">Print</button>
     <?php endif; ?>
 </form>
 

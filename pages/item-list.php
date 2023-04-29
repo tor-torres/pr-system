@@ -29,7 +29,7 @@
                             <?php require_once('./elements/components/add-item.php') ?>
                         </div>
                         <div class="card-body">
-                            <?php   $select = $DB->query("SELECT * FROM itemtable INNER JOIN categorytable ON itemtable.cat_id = categorytable.cat_id");  ?>
+                            <?php   $select = $DB->query("SELECT * FROM itemtable INNER JOIN categorytable ON itemtable.cat_id = categorytable.cat_id ORDER BY itemtable.id DESC");  ?>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>

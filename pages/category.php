@@ -29,7 +29,7 @@
                             <?php require_once('./elements/components/add-category.php') ?>
                         </div>
                         <div class="card-body">
-                            <?php $select = $DB->query("SELECT * FROM categorytable"); ?>
+                            <?php $select = $DB->query("SELECT * FROM categorytable ORDER BY cat_id DESC"); ?>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>

@@ -19,7 +19,16 @@
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="default">Dashboard</a></li>
+                        <?php if($_SESSION[AUTH_TYPE] === "admin") {
+                            $id = $_GET['id'];
+                            $query = $DB->query("SELECT * FROM approvedtable INNER JOIN users ON users.id = approvedtable.userID INNER JOIN departmenttable ON users.dept_id = departmenttable.dept_id  WHERE userID = '$id' ");
+                            $run = $query->fetch_object();
+                        ?>
+                        <li class="breadcrumb-item "><a href="report">Report</a></li>
+                        <li class="breadcrumb-item active text-capitalize"><?php echo $run->department ?></li>
+                        <?php }else { ?>
                         <li class="breadcrumb-item active">Report</li>
+                        <?php } ?>
                     </ol>
                 </div>
             </div>
@@ -58,7 +67,7 @@
                                     INNER JOIN categorytable ON approvedtable.cat_id = categorytable.cat_id
                                     INNER JOIN users ON approvedtable.userID = users.id
                                     INNER JOIN departmenttable ON users.dept_id = departmenttable.dept_id
-                                    WHERE $condition");
+                                    WHERE $condition ORDER BY request_id DESC");
                             ?>
                             <table id="example1" class="table table-bordered">
                                 <thead>
@@ -67,10 +76,11 @@
                                         <th>Transaction ID</th>
                                         <?php if($_SESSION[AUTH_TYPE] === "admin"):?>
                                         <th>Department</th>
-                                        <th>Fullname</th>
+                                        <!-- <th>Fullname</th> -->
                                         <?php endif; ?>
                                         <th>Category</th>
                                         <th>Item Name</th>
+                                        <th>Item Desc.</th>
                                         <th>Unit</th>
                                         <th>Cost</th>
                                         <th>Quantity</th>
@@ -89,13 +99,14 @@
                                                     $formatted_date = date('M, d, Y', strtotime($date));
                                                 ?>
                                                 <td><?php echo $formatted_date ?></td>
-                                                <td class="text-capitalize"><?php echo $row['request_id'] ?></td>
+                                                <td class="text-capitalize"><?php echo string_id().$row['request_id'] ?></td>
                                                 <?php if($_SESSION[AUTH_TYPE] === "admin"):?>
                                                 <td class="text-capitalize"><?php echo $row['department'] ?></td>
-                                                <td class="text-capitalize"><?php echo $row['fullname'] ?></td>
+                                                <!-- <td class="text-capitalize"><?php //echo $row['fullname'] ?></td> -->
                                                 <?php endif; ?>
                                                 <td class="text-capitalize"><?php echo $row['category'] ?></td>
                                                 <td class="text-capitalize"><?php echo $row['item_name'] ?></td>
+                                                <td class="text-capitalize col-lg-2"><?php echo $row['item_description'] ?></td>
                                                 <td class="text-capitalize"><?php echo $row['unit'] ?></td>
                                                 <td><?php echo $row['cost'] ?></td>
                                                 <td><?php echo $row['quantity'] ?></td>

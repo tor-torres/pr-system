@@ -46,3 +46,19 @@ function goto_report( $page = "report", $q = "" ) {
 	header( "Location: " . SITE_URL . "/$page" . ( !empty( $q ) ? '&' . $q : '' ) );
 	exit;
 }
+
+function register_page( $page = "register", $q = "" ) {
+	header( "Location: " . SITE_URL . "/$page" . ( !empty( $q ) ? '&' . $q : '' ) );
+	exit;
+}
+
+function login_page( $page = "login", $q = "" ) {
+	header( "Location: " . SITE_URL . "/$page" . ( !empty( $q ) ? '&' . $q : '' ) );
+	exit;
+}
+
+function string_id(){
+	return "PR_000";
+}
+
+

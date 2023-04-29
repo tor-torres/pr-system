@@ -29,7 +29,7 @@
                             <?php require_once('./elements/components/add-department.php') ?>
                         </div>
                         <div class="card-body">
-                            <?php $query = $DB->query("SELECT * FROM departmenttable"); ?>
+                            <?php $query = $DB->query("SELECT * FROM departmenttable ORDER BY dept_id DESC"); ?>
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>

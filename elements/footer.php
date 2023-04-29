@@ -47,8 +47,6 @@
 <script src="assets/js/script.js"></script>
 <!-- Delete Modal Confirmation-->
 <script src="assets/js/delete-confirmation.js"></script>
-<!-- Datatables Script -->
-<script src="assets/js/datatable.js"></script>
 <!-- DataTables  & Plugins -->
 <script src="assets/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
@@ -62,17 +60,35 @@
 <script src="assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-
+<script>
+    $(function () {
+    $("#example1").DataTable({
+        "responsive": true, 
+        "lengthChange": true, 
+        "autoWidth": false,
+        // "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
+    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+    $('#example2').DataTable({
+        "paging": true,
+        "lengthChange": true, //false
+        "searching": true, //false
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+    });
+});
+</script>
 <!-- Toastr Message -->
 <script>
     toastr.options = {
         "closeButton": false,
-        "debug": true,
+        "debug": false,
         "newestOnTop": true,
         "progressBar": true,
-        "positionClass": "toast-bottom-right",
-        "preventDuplicates": false,
-        "showDuration": "300",
+        "positionClass": "toast-top-right",
+        "preventDuplicates": true,
+        "showDuration": "10000",
         "hideDuration": "1000",
         "timeOut": "5000",
         "extendedTimeOut": "1000",

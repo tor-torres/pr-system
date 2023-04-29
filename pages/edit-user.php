@@ -1,10 +1,11 @@
-<?php if (!defined('ACCESS')) die('DIRECT ACCESS NOT ALLOWED'); ?>
+<?php if (!defined('ACCESS'))
+    die('DIRECT ACCESS NOT ALLOWED'); ?>
 
 <?= element('header'); ?>
 <?= element('modal-logout'); ?>
 <?= element('sidebar'); ?>
 
-<?php 
+<?php
 $id = $_GET['id'];
 $query = $DB->query("SELECT * FROM users INNER JOIN departmenttable ON users.dept_id = departmenttable.dept_id WHERE id = $id");
 $users = $query->fetch_object();
@@ -47,26 +48,42 @@ $users = $query->fetch_object();
                                             </button>
                                         </div>
                                         <div class="modal-body">
-                                            <form method="post">
+                                            <form method="post" enctype="multipart/form-data">
                                                 <input type="hidden" name="action" value="update_user">
+                                                <div class="form-group">
+                                                    <label for="avatar">Upload Profile Avatar:</label>
+                                                    <div class="input-group">
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input" id="avatar"
+                                                                name="avatar" accept=".jpg, .jpeg, .png" required>
+                                                            <label class="custom-file-label" for="avatar">Choose
+                                                                file</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <div class="form-group">
                                                     <div class="form-row">
                                                         <div class="col-lg-6">
                                                             <label for="department">Department:</label>
-                                                            <select class="form-control text-capitalize" id="dept_id" name="dept_id" required>
-                                                            <?php
-                                                                    $select = $DB->query("SELECT * FROM departmenttable");  
-                                                                    if ($select->num_rows > 0) {
+                                                            <select class="form-control text-capitalize" id="dept_id"
+                                                                name="dept_id" required>
+                                                                <?php
+                                                                $select = $DB->query("SELECT * FROM departmenttable");
+                                                                if ($select->num_rows > 0) {
                                                                     while ($row = $select->fetch_assoc()) { ?>
-                                                                        <option value="<?php echo $row['dept_id']?>" <?php if($users->dept_id == $row['dept_id']) echo "selected=selected" ?>><?php echo $row['department']?></option>
-                                                                    <?php  }
-                                                                    } else { ?>
+                                                                        <option value="<?php echo $row['dept_id'] ?>" <?php if ($users->dept_id == $row['dept_id'])
+                                                                              echo "selected=selected" ?>><?php echo $row['department'] ?></option>
+                                                                    <?php }
+                                                                } else { ?>
                                                                 <?php } ?>
                                                             </select>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <label for="usertype">Position:</label>
-                                                            <input type="text" class="form-control text-capitalize" name="usertype" id="usertype" value="<?php echo $users->usertype ?>" disabled required>
+                                                            <input type="text" class="form-control text-capitalize"
+                                                                name="usertype" id="usertype"
+                                                                value="<?php echo $users->usertype ?>" disabled
+                                                                required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -74,21 +91,28 @@ $users = $query->fetch_object();
                                                     <div class="form-row">
                                                         <div class="col-lg-6">
                                                             <label for="fullname">Full name:</label>
-                                                            <input type="text" class="form-control text-capitalize" id="fullname" name="fullname" placeholder="Enter Fullname" value="<?php echo $users->fullname ?>" required>
+                                                            <input type="text" class="form-control text-capitalize"
+                                                                id="fullname" name="fullname"
+                                                                placeholder="Enter Fullname"
+                                                                value="<?php echo $users->fullname ?>" required>
                                                         </div>
                                                         <div class="col-lg-6">
                                                             <label for="username">Username:</label>
-                                                            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username" value="<?php echo $users->username ?>" required>
+                                                            <input type="text" class="form-control" id="username"
+                                                                name="username" placeholder="Enter Username"
+                                                                value="<?php echo $users->username ?>" required>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="form-row">
                                                         <div class="col-lg-6">
-                                                            <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">
+                                                            <button type="button" class="btn btn-danger btn-sm"
+                                                                data-dismiss="modal">
                                                                 <i class="fa fa-times-circle"></i> Cancel
                                                             </button>
-                                                            <button type="submit" name="btn-submit" class="btn btn-success btn-sm">
+                                                            <button type="submit" name="btn-submit"
+                                                                class="btn btn-success btn-sm">
                                                                 <i class="fa fa-check-circle"></i> Update
                                                             </button>
                                                         </div>
@@ -116,17 +140,21 @@ $users = $query->fetch_object();
                                                 <div class="form-row">
                                                     <div class="col-lg-12">
                                                         <label for="password">Password:</label>
-                                                        <input type="password" class="form-control text-capitalize" id="password" name="password" placeholder="Enter Password" required>
+                                                        <input type="password" class="form-control text-capitalize"
+                                                            id="password" name="password" placeholder="Enter Password"
+                                                            required>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <div class="form-row">
                                                     <div class="col-lg-6">
-                                                        <button type="button" class="btn btn-danger btn-sm" data-dismiss="modal">
+                                                        <button type="button" class="btn btn-danger btn-sm"
+                                                            data-dismiss="modal">
                                                             <i class="fa fa-times-circle"></i> Cancel
                                                         </button>
-                                                        <button type="submit" name="btn-submit" class="btn btn-success btn-sm">
+                                                        <button type="submit" name="btn-submit"
+                                                            class="btn btn-success btn-sm">
                                                             <i class="fa fa-check-circle"></i> Update
                                                         </button>
                                                     </div>
@@ -139,14 +167,27 @@ $users = $query->fetch_object();
                         </div>
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle" src="assets/images/logo.png" width="50px">
+                                <?php if ($users->avatar == null) { ?>
+                                    <img class="img-fluid img-circle" src="./assets/images/logo.png" width="100px">
+                                <?php } else { ?>
+                                    <img class="img-fluid img-circle" src="./assets/images/<?php echo $users->avatar ?>"
+                                        width="100px">
+                                <?php } ?>
                             </div>
-                            <h5 class="profile-username text-center text-capitalize"><?php echo $users->fullname ?></h5>
-                            <p class="text-muted text-center text-uppercase mb-0"><?php echo $users->usertype ?></p>
-                            <p class="text-muted text-center text-uppercase"><?php echo $users->department ?></p>
+                            <h5 class="profile-username text-center text-capitalize">
+                                <?php echo $users->fullname ?>
+                            </h5>
+                            <p class="text-muted text-center text-uppercase mb-0">
+                                <?php echo $users->usertype ?>
+                            </p>
+                            <p class="text-muted text-center text-uppercase">
+                                <?php echo $users->department ?>
+                            </p>
                             <div class="col-md-12 text-center">
-                                <button class="btn btn-success btn-md" data-toggle="modal" data-target="#modal-default"><b>Update Profile</b></button>
-                                <button class="btn btn-warning btn-md" data-toggle="modal" data-target="#modal-info"><b>Change Password</b></button>
+                                <button class="btn btn-success btn-md" data-toggle="modal"
+                                    data-target="#modal-default"><b>Update Profile</b></button>
+                                <button class="btn btn-warning btn-md" data-toggle="modal"
+                                    data-target="#modal-info"><b>Change Password</b></button>
                             </div>
                         </div>
                     </div>

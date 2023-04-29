@@ -33,9 +33,9 @@
                         <div class="card-body">
                             <?php
                                 if($_SESSION[AUTH_TYPE] == 'admin') {
-                                    $select = $DB->query("SELECT * FROM pendingtable INNER JOIN categorytable ON pendingtable.cat_id = categorytable.cat_id INNER JOIN users ON pendingtable.userID = users.id INNER JOIN departmenttable ON users.dept_id = departmenttable.dept_id");
+                                    $select = $DB->query("SELECT * FROM pendingtable INNER JOIN categorytable ON pendingtable.cat_id = categorytable.cat_id INNER JOIN users ON pendingtable.userID = users.id INNER JOIN departmenttable ON users.dept_id = departmenttable.dept_id ORDER BY request_id DESC");
                                 }else{
-                                    $select = $DB->query("SELECT * FROM pendingtable INNER JOIN categorytable ON pendingtable.cat_id = categorytable.cat_id INNER JOIN users ON pendingtable.userID = users.id INNER JOIN departmenttable ON users.dept_id = departmenttable.dept_id WHERE id = {$_SESSION[AUTH_ID]}");
+                                    $select = $DB->query("SELECT * FROM pendingtable INNER JOIN categorytable ON pendingtable.cat_id = categorytable.cat_id INNER JOIN users ON pendingtable.userID = users.id INNER JOIN departmenttable ON users.dept_id = departmenttable.dept_id WHERE id = {$_SESSION[AUTH_ID]} ORDER BY request_id DESC");
                                 }
                             ?>
                             <table id="example1" class="table table-bordered table-striped">
@@ -45,10 +45,11 @@
                                         <th>Transaction ID</th>
                                         <?php if($_SESSION[AUTH_TYPE] === "admin"): ?>
                                         <th>Department</th>
-                                        <th>Fullname</th>
+                                        <!-- <th>Fullname</th> -->
                                         <?php endif; ?>
                                         <th>Category</th>
                                         <th>Item Name</th>
+                                        <th>Item Desc</th>
                                         <th>Unit</th>
                                         <th>Cost</th>
                                         <th>Quantity</th>
@@ -67,13 +68,14 @@
                                                     $formatted_date = date('M, d, Y', strtotime($date));
                                                 ?>
                                                 <td><?php echo $formatted_date ?></td>
-                                                <td class="text-capitalize"><?php echo $row['request_id'] ?></td>
+                                                <td class="text-capitalize"><?php echo string_id().$row['request_id'] ?></td>
                                                 <?php if($_SESSION[AUTH_TYPE] === "admin"): ?>
                                                 <td class="text-capitalize"><?php echo $row['department'] ?></td>
-                                                <td class="text-capitalize"><?php echo $row['fullname'] ?></td>
+                                                <!-- <td class="text-capitalize"><?php //echo $row['fullname'] ?></td> -->
                                                 <?php endif; ?>
                                                 <td class="text-capitalize"><?php echo $row['category'] ?></td>
                                                 <td class="text-capitalize"><?php echo $row['item_name'] ?></td>
+                                                <td class="text-capitalize"><?php echo $row['item_description'] ?></td>
                                                 <td class="text-capitalize"><?php echo $row['unit'] ?></td>
                                                 <td><?php echo $row['cost'] ?></td>
                                                 <td><?php echo $row['quantity'] ?></td>

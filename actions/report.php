@@ -15,10 +15,12 @@ if (mysqli_num_rows($query) > 0) {
     $cost = $row['cost'];
     $quantity = $row['quantity'];
     $total_cost = $row['total_cost'];
+    $item_description = $row['item_description'];
+    $purpose = $row['purpose'];
     $created_at = $row['created_at'];
 
     // Insert the data into the approved table
-    $insert = "INSERT INTO approvedtable SET request_id = '$request_id', userID = '$userID', cat_id = '$cat_id', item_name = '$item_name', unit = '$unit', cost = '$cost', quantity = '$quantity', total_cost = '$total_cost', created_at = '$created_at' ";
+    $insert = "INSERT INTO approvedtable SET request_id = '$request_id', userID = '$userID', cat_id = '$cat_id', item_name = '$item_name', unit = '$unit', cost = '$cost', quantity = '$quantity', total_cost = '$total_cost', item_description = '$item_description', purpose = '$purpose', created_at = '$created_at' ";
 
     if ($DB->query($insert)) {
         // Delete the data from the original table

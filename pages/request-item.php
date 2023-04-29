@@ -90,7 +90,11 @@ $user = $query->fetch_object();
                                 </div>
                                 <div class="form-group">
                                     <div class="form-row">
-                                        <div class="col-lg-12">
+                                        <div class="col-lg-6">
+                                            <label for="item_description">Item Description:</label>
+                                            <textarea name="item_description" id="item_description" class="form-control" placeholder="Please enter the item description"></textarea>
+                                        </div>
+                                        <div class="col-lg-6">
                                             <label for="purpose">Purpose:</label>
                                             <textarea name="purpose" id="purpose" class="form-control" placeholder="Please Enter Purpose"></textarea>
                                         </div>
@@ -123,9 +127,9 @@ $user = $query->fetch_object();
     $(document).ready(function(){
     $('.action').change(function(){
         if($(this).val() != ''){
-            var action = $(this).attr("id");
-            var query = $(this).val();
-            var result = '';
+            let action = $(this).attr("id");
+            let query = $(this).val();
+            let result = '';
             if(action == "category"){
                 result = 'item_name';
             }else if(action == "item_name"){
